@@ -37,6 +37,8 @@
                 android:resource="@xml/accessible_service_config" />
         </service>
         
+        <service android:name=".AutoService"></service>
+        
     </application>
 
 </manifest>

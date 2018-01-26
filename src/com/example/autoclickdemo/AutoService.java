@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.os.IBinder;
 import android.text.TextUtils;
 import android.util.Log;
+import android.widget.Toast;
 
 /**
  * @description 自动点击adb shell版
@@ -104,7 +105,7 @@ public class AutoService extends Service {
 	}
 
 	/**
-	 * 获取前台程序包名
+	 * 获取前台程序包名，该方法在android L之前有效
 	 */
 	public String getForegroundAppPackageName() {
 		ActivityManager am = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
@@ -117,6 +118,8 @@ public class AutoService extends Service {
 			if (ra.importance == RunningAppProcessInfo.IMPORTANCE_VISIBLE || ra.importance == RunningAppProcessInfo.IMPORTANCE_FOREGROUND) {
 				Log.i("GK", ra.processName);
 				return ra.processName;
+			}else{
+				Log.i("GK", "找不到");
 			}
 		}
 		return "";
